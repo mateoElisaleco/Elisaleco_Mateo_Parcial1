@@ -60,7 +60,7 @@ public class Sistema {
                 
             }
         }    
-       Gastronomia g = new Gastronomia(codServicio, porcentajeDescuento, enPromocion,gastronomia,precio,diaSemDesc,codServicio,porcentajeDescuento,enPromocion);
+       Gastronomia g = new Gastronomia(codServicio, porcentajeDescuento, enPromocion,gastronomia,precio,diaSemDesc);
         lstServicio.add(g);
              
        
@@ -80,30 +80,6 @@ public class Sistema {
               
         Hospedaje h = new Hospedaje(codServicio,porcentajeDescuento,enPromocion,hospedaje,precioPorNoche);
         lstServicio.add(h);
-    }
-    
-}
-
-
-class Hospedaje extends Servicio {
-    
-    private String hospedaje;
-    private double precioPorNoche;
-
-    public Hospedaje(String codServi, double porcentajeDesc, boolean enProm,String hospedaje, double precioPorNoche) {
-        super(codServi, porcentajeDesc, enProm);
-        this.hospedaje = hospedaje;
-        this.precioPorNoche = precioPorNoche;
-    }
-    
-    @Override    
-    public double calcularPrecioFinal(LocalDate dia)
-    {
-        int diaSemanaActual = dia.getDayOfWeek().getValue();
-        if(enPromocion && (diaSemanaActual < 6))
-        {
-            return precioPorNoche * (1 - porcentajeDescuento / 100);
-        }else{return precioPorNoche;}
     }
     
 }
